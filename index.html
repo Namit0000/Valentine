@@ -378,16 +378,21 @@ welcomeYes.addEventListener("click", (e) => {
   e.preventDefault();
 
   // hide welcome modal
-  welcomeModal.classList.add("hidden");
+// hide welcome modal
+welcomeModal.classList.add("hidden");
 
-  // show loading popup
-  loadingModal.classList.remove("hidden");
+// hide background while loading
+mainCard.classList.add("page-hidden");
+
+// show loading popup
+loadingModal.classList.remove("hidden");
+
 
   // after loading, show main page
   setTimeout(() => {
     loadingModal.classList.add("hidden");
     mainCard.classList.remove("page-hidden");
-  }, 1200); // 1.2 sec loading
+  }, 3000); // 1.2 sec loading
 });
 
 
