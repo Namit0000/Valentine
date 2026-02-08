@@ -215,6 +215,15 @@ body::after  { bottom: -30px; opacity: 0.10; animation-duration: 10s; }
   font-size: 1.2rem;
 }
 
+.modal {
+  pointer-events: auto;
+}
+
+.page-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .welcome-img{
   width: 140px;
   height: 140px;
@@ -370,7 +379,7 @@ closeModal.onclick = () => {
     yesBtn.onclick = () => {
       showModal(
         "YAYYYY 💖",
-        "You just made me the happiest person 😭💘\nHappy Valentine’s Day!"
+        "I knew you were gonna say yes! obvio 😭💘\nHappy Valentine’s Day Tammu!"
       );
       launchHearts();
     };
