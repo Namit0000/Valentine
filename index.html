@@ -281,6 +281,20 @@ body::after  { bottom: -30px; opacity: 0.10; animation-duration: 10s; }
   opacity: 0.75;
 }
 
+.loader{
+  width: 44px;
+  height: 44px;
+  margin: 14px auto 0;
+  border-radius: 50%;
+  border: 4px solid rgba(255,77,157,0.25);
+  border-top-color: #ff4d9d;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+  to { transform: rotate(360deg); }
+}
+
 
   </style>
 </head>
@@ -297,6 +311,17 @@ body::after  { bottom: -30px; opacity: 0.10; animation-duration: 10s; }
     <button id="welcomeYes" class="welcome-btn">Yes 😘</button>
   </div>
 </div>
+
+<!-- LOADING POPUP -->
+<div id="loadingModal" class="modal hidden">
+  <div class="modal-box">
+    <h2 style="margin:0 0 10px;">One sec baby… 💕</h2>
+    <p style="margin:0; opacity:.75;">Loading something cute 😘</p>
+
+    <div class="loader"></div>
+  </div>
+</div>
+
 
   <div class="card">
     <p class="hey-text">Hey baby 💕</p>
@@ -347,13 +372,25 @@ body::after  { bottom: -30px; opacity: 0.10; animation-duration: 10s; }
 const welcomeYes = document.getElementById("welcomeYes");
 const mainCard = document.querySelector(".card");
 
-// hide main content at start
-mainCard.classList.add("page-hidden");
+const loadingModal = document.getElementById("loadingModal");
 
-welcomeYes.addEventListener("click", () => {
-  welcomeModal.classList.add("hidden");   // uses your existing .hidden class
-  mainCard.classList.remove("page-hidden");
+welcomeYes.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  // hide welcome modal
+  welcomeModal.classList.add("hidden");
+
+  // show loading popup
+  loadingModal.classList.remove("hidden");
+
+  // after loading, show main page
+  setTimeout(() => {
+    loadingModal.classList.add("hidden");
+    mainCard.classList.remove("page-hidden");
+  }, 1200); // 1.2 sec loading
 });
+
+
 
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
